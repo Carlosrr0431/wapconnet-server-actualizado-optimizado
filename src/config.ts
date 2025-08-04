@@ -2,37 +2,35 @@ import { ServerOptions } from './types/ServerOptions';
 
 export default {
   secretKey: 'THISISMYSECURETOKEN',
-  host: 'http://localhost',
+  host: 'wapconnet-server-actualizado-opt.railway.internal',
   port: '21465',
   deviceName: 'WppConnect',
   poweredBy: 'WPPConnect-Server',
-  startAllSession: true,
+  startAllSession: false,
   tokenStoreType: 'file',
-  maxListeners: 15,
+  maxListeners: 100,
   customUserDataDir: './userDataDir/',
-  webhook: {
-    url: null,
-    autoDownload: true,
-    uploadS3: false,
-    readMessage: true,
-    allUnreadOnStart: false,
-    listenAcks: true,
-    onPresenceChanged: true,
-    onParticipantsChanged: true,
-    onReactionMessage: true,
-    onPollResponse: true,
-    onRevokedMessage: true,
-    onLabelUpdated: true,
-    onSelfMessage: false,
-    ignore: ['status@broadcast'],
-  },
+webhook: {
+  url: null,                   // No hay URL de webhook configurada aún
+  autoDownload: true,          // Descarga automática de archivos multimedia
+  readMessage: false,           // Marca los mensajes como leídos al recibirlos
+  listenAcks: true,            // Escucha confirmaciones de lectura (ticks)
+  onPresenceChanged: false,    // ❌ No escucha cambios de presencia (por ejemplo: "escribiendo...")
+  onParticipantsChanged: false, // ❌ No escucha cambios en participantes de grupos
+  onReactionMessage: false,    // ❌ No escucha reacciones (emojis)
+  onPollResponse: false,        // ✅ Escucha respuestas a encuestas
+  onRevokedMessage: false,      // ✅ Escucha cuando un mensaje se borra para todos
+  onLabelUpdated: false,        // ✅ Escucha cambios de etiquetas
+  onSelfMessage: false,        // ❌ No procesa mensajes enviados por el propio bot
+  ignore: ['status@broadcast'] // Ignora mensajes del estado de WhatsApp
+},
   websocket: {
     autoDownload: false,
     uploadS3: false,
   },
   chatwoot: {
-    sendQrCode: true,
-    sendStatus: true,
+    sendQrCode: false,
+    sendStatus: false,
   },
   archive: {
     enable: false,
@@ -40,14 +38,13 @@ export default {
     daysToArchive: 45,
   },
   log: {
-    level: 'silly', // Before open a issue, change level to silly and retry a action
-    logger: ['console', 'file'],
+    level: 'warn', // Before open a issue, change level to silly and retry a action
+    logger: ['console'],
   },
   createOptions: {
     browserArgs: [
       '--disable-web-security',
       '--no-sandbox',
-      '--disable-web-security',
       '--aggressive-cache-discard',
       '--disable-cache',
       '--disable-application-cache',
