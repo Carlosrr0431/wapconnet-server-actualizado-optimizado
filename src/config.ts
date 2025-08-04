@@ -1,7 +1,7 @@
 import { ServerOptions } from './types/ServerOptions';
 
 export default {
-  secretKey: 'THISISMYSECURETOKEN',
+  secretKey: 'carlosrr040696123#',
   host: 'wapconnet-server-actualizado-opt.railway.internal',
   port: '21465',
   deviceName: 'WppConnect',
@@ -89,7 +89,7 @@ webhook: {
     mongoIsRemote: true,
     mongoURLRemote: '',
     mongodbPort: 27017,
-    redisHost: 'localhost',
+    redisHost: 'wapconnet-server-actualizado-opt.railway.internal',
     redisPort: 6379,
     redisPassword: '',
     redisDb: 0,
